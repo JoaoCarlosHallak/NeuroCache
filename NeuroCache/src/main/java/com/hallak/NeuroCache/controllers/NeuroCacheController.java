@@ -1,6 +1,7 @@
 package com.hallak.NeuroCache.controllers;
 
 
+import com.hallak.NeuroCache.services.ChatService;
 import com.hallak.NeuroCache.services.ExtractionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,16 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class NeuroCacheController {
 
 
-    private final ExtractionService extractionService;
+    private final ChatService chatService;
 
-    public NeuroCacheController(ExtractionService extractionService){
-        this.extractionService = extractionService;
+    public NeuroCacheController(ChatService chatService) {
+        this.chatService = chatService;
     }
 
 
 
     @GetMapping("chat")
     public ResponseEntity<?> chat(@RequestParam(defaultValue = "Conte uma piada") String payload) {
-        return new ResponseEntity<>(extractionService.payloadExtraction(payload), HttpStatus.OK);
+        return new ResponseEntity<>(chatService.sendToAI(payload), HttpStatus.OK);
     }
 }
