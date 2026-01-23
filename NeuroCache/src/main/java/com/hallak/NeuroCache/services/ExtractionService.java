@@ -1,5 +1,7 @@
 package com.hallak.NeuroCache.services;
 
+import com.hallak.NeuroCache.entities.Memory;
+
 public interface ExtractionService {
-    String assemblyMemoryObject(String payload);
+    Memory assemblyMemoryObject(String payload);
 }

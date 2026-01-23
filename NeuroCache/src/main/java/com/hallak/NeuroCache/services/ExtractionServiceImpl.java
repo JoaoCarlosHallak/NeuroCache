@@ -24,10 +24,9 @@ public class ExtractionServiceImpl implements ExtractionService{
 
 
     @Override
-    public String assemblyMemoryObject(String payload) {
+    public Memory assemblyMemoryObject(String payload) {
         Memory memory = new Memory();
 
-        memory.setId("temporary");
         /*
         memory,setUserId(payload.getUserId);
          */
@@ -46,7 +45,7 @@ public class ExtractionServiceImpl implements ExtractionService{
         System.out.println("Domain >> " + chatService.sendToAI((SystemPrompts.getAnalyzerPromptDomain(payload))));
         memory.setDomain(Domain.valueOf(chatService.sendToAI(SystemPrompts.getAnalyzerPromptDomain(payload)).trim().toUpperCase()));
 
-        return memory.toString();
+        return memory;
 
 
 

@@ -1,8 +1,10 @@
 package com.hallak.NeuroCache.controllers;
 
 
+import com.hallak.NeuroCache.dtos.MemoryDTO;
 import com.hallak.NeuroCache.services.ChatService;
 import com.hallak.NeuroCache.services.ExtractionService;
+import com.hallak.NeuroCache.services.MemoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,27 +16,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/")
 public class NeuroCacheController {
-
-
-    private final ChatService chatService;
-    private final ExtractionService extractionService;
+    private final MemoryService memoryService;
 
     @Autowired
-    public NeuroCacheController(ChatService chatService, ExtractionService extractionService) {
-        this.chatService = chatService;
-        this.extractionService = extractionService;
+        public NeuroCacheController(MemoryService memoryService) {
+        this.memoryService = memoryService;
 
     }
 
 
 
     @GetMapping("chat")
-    public ResponseEntity<?> chat(@RequestParam(defaultValue = "Conte uma piada") String payload) {
-        return new ResponseEntity<>(chatService.sendToAI(payload), HttpStatus.OK);
+    public ResponseEntity<MemoryDTO> chat(@RequestParam(defaultValue = "Conte uma piada") String payload) {
+        return new ResponseEntity<>(memoryService.saveMemory(payload), HttpStatus.OK);
     }
 
-    @GetMapping("a")
-    public ResponseEntity<String> a(@RequestParam(defaultValue = "Conte uma piada") String payload) {
-        return new ResponseEntity<>(extractionService.assemblyMemoryObject(payload), HttpStatus.OK);
-    }
+
 }
