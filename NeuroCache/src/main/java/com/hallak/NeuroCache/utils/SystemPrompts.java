@@ -84,4 +84,49 @@ public class SystemPrompts {
         }
 
 
+    public static String getContextPayloadPrompt(String payload) {
+        return """
+Você é um classificador de mensagens para um sistema de memória.
+
+Sua função é decidir se um texto deve ser:
+- armazenado como memória
+- usado para responder uma pergunta
+- ou ambos
+
+Classifique o texto entre <TEXT> e </TEXT> em UMA das categorias:
+
+INFO
+MIXED
+QUEST
+
+Definições:
+
+INFO
+O texto é uma afirmação, declaração ou descrição de fatos, crenças, preferências, identidade, experiências ou estados do usuário ou do mundo.
+Mesmo que possa gerar conversa, ele NÃO pede nada explicitamente.
+
+QUEST
+O texto tem como objetivo principal obter uma resposta, explicação, ajuda ou ação.
+
+MIXED
+O texto contém ao mesmo tempo:
+- uma afirmação ou informação
+e
+- um pedido, pergunta ou solicitação
+
+Regras:
+1. Frases como “eu acredito”, “eu penso”, “eu gosto”, “eu sou”, “na minha opinião” são INFO se não houver pergunta.
+2. Só é QUEST se houver intenção clara de obter resposta.
+3. Retorne SOMENTE uma palavra: INFO, MIXED ou QUEST.
+4. Não escreva mais nada.
+
+<TEXT>
+""" + payload + """
+</TEXT>
+""";
+    }
+
+
+
+
     }

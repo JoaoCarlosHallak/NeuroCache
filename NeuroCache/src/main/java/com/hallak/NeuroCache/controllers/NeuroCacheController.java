@@ -2,6 +2,7 @@ package com.hallak.NeuroCache.controllers;
 
 
 import com.hallak.NeuroCache.dtos.MemoryDTO;
+import com.hallak.NeuroCache.dtos.QueryResponseDTO;
 import com.hallak.NeuroCache.services.ChatService;
 import com.hallak.NeuroCache.services.ExtractionService;
 import com.hallak.NeuroCache.services.MemoryService;
@@ -16,19 +17,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/")
 public class NeuroCacheController {
-    private final MemoryService memoryService;
+    private final ExtractionService extractionService;
 
     @Autowired
-        public NeuroCacheController(MemoryService memoryService) {
-        this.memoryService = memoryService;
+        public NeuroCacheController(ExtractionService extractionService) {
+        this.extractionService = extractionService;
 
     }
 
 
 
     @GetMapping("chat")
-    public ResponseEntity<MemoryDTO> chat(@RequestParam(defaultValue = "Conte uma piada") String payload) {
-        return new ResponseEntity<>(memoryService.saveMemory(payload), HttpStatus.OK);
+    public ResponseEntity<QueryResponseDTO> chat(@RequestParam(defaultValue = "Diga oi") String payload) {
+        return new ResponseEntity<>(extractionService.handleContextPayload(payload), HttpStatus.OK);
     }
 
 
