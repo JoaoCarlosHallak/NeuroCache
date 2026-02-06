@@ -1,5 +1,6 @@
 package com.hallak.NeuroCache.services;
 
+import io.jsonwebtoken.security.SignatureException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+
 
 @Component
 public class JwtFilter extends OncePerRequestFilter {
@@ -31,31 +33,44 @@ public class JwtFilter extends OncePerRequestFilter {
                                     FilterChain chain)
             throws IOException, ServletException {
 
-        String header = request.getHeader("Authorization");
+        try {
 
-        if (header != null && header.startsWith("Bearer ")) {
-            String token = header.substring(7);
-            String email = jwtService.extractEmail(token);
+            String header = request.getHeader("Authorization");
 
-            if (email != null &&
-                    SecurityContextHolder.getContext().getAuthentication() == null) {
+            if (header != null && header.startsWith("Bearer ")) {
 
-                UserDetails user =
-                        userDetailsService.loadUserByUsername(email);
+                String token = header.substring(7);
+                String email = jwtService.extractEmail(token);
 
-                if (jwtService.isValid(token, user)) {
-                    UsernamePasswordAuthenticationToken auth =
-                            new UsernamePasswordAuthenticationToken(
-                                    user, null, user.getAuthorities()
-                            );
+                if (email != null &&
+                        SecurityContextHolder.getContext().getAuthentication() == null) {
 
-                    SecurityContextHolder
-                            .getContext()
-                            .setAuthentication(auth);
+                    UserDetails user =
+                            userDetailsService.loadUserByUsername(email);
+
+                    if (jwtService.isValid(token, user)) {
+
+                        UsernamePasswordAuthenticationToken auth =
+                                new UsernamePasswordAuthenticationToken(
+                                        user, null, user.getAuthorities());
+
+                        SecurityContextHolder.getContext().setAuthentication(auth);
+                    }
                 }
             }
-        }
 
-        chain.doFilter(request, response);
+            chain.doFilter(request, response);
+
+        } catch (SignatureException e) {
+
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.setContentType("application/json");
+            response.getWriter().write("""
+        {
+          "message": "Invalid token signature"
+        }
+        """);
+        }
     }
+
 }

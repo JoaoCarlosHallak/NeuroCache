@@ -3,26 +3,24 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BeansEndpointTabSettings">
+    <option name="diagramMode" value="true" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="8837eba2-5dc6-427a-a038-5cf151883416" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/configs/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/controllers/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/dtos/LoginRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/dtos/SignupRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/dtos/TokenResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/dtos/UserResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/entities/RoleName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/entities/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/entities/UserMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/repositories/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/JwtFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/JwtService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/JwtServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/UserDetailsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/exceptions/GenericApiError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/exceptions/UserAlreadyExistsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/exceptions/exceptionHandlers/MainExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NeuroCache/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/NeuroCache/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/controllers/NeuroCacheController.java" beforeDir="false" afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/controllers/NeuroCacheController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/JwtServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/JwtServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/MemoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/MemoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +40,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -62,34 +64,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Spring Boot.NeuroCacheApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.NeuroCacheApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.hallak.NeuroCache.entities" />
@@ -134,7 +137,9 @@
       <workItem from="1769107554768" duration="5820000" />
       <workItem from="1769698785038" duration="424000" />
       <workItem from="1769699394128" duration="1571000" />
-      <workItem from="1770050769455" duration="17932000" />
+      <workItem from="1770050769455" duration="18546000" />
+      <workItem from="1770401548819" duration="1102000" />
+      <workItem from="1770403298357" duration="2884000" />
     </task>
     <servers />
   </component>

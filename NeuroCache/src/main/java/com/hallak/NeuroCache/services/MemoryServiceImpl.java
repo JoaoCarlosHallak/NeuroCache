@@ -24,13 +24,15 @@ public class MemoryServiceImpl implements MemoryService {
     private final Logger logger = LoggerFactory.getLogger(MemoryServiceImpl.class);
     private final EmbeddingService embeddingService;
     private final ChatService chatService;
+    private final UserService userService;
 
     @Autowired
-    public MemoryServiceImpl(MemoryRepository memoryRepository, ModelMapper modelMapper, EmbeddingService embeddingService, ChatService chatService) {
+    public MemoryServiceImpl(MemoryRepository memoryRepository, ModelMapper modelMapper, EmbeddingService embeddingService, ChatService chatService, UserService userService) {
         this.memoryRepository = memoryRepository;
         this.modelMapper = modelMapper;
         this.embeddingService = embeddingService;
         this.chatService = chatService;
+        this.userService = userService;
     }
 
 
@@ -38,10 +40,7 @@ public class MemoryServiceImpl implements MemoryService {
         try {
             Memory memory = new Memory();
 
-        /*
-        memory,setUserId(payload.getUserId);
-         */
-            memory.setUserId("temporaryUserId");
+            memory.setUserId(userService.getAuthenticatedUser().getId());
 
             memory.setContent(payload);
 

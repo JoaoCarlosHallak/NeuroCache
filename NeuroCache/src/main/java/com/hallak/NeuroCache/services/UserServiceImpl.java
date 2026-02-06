@@ -8,17 +8,16 @@ import com.hallak.NeuroCache.dtos.UserResponseDTO;
 import com.hallak.NeuroCache.entities.RoleName;
 import com.hallak.NeuroCache.entities.User;
 import com.hallak.NeuroCache.entities.UserMain;
+import com.hallak.NeuroCache.exceptions.UserAlreadyExistsException;
 import com.hallak.NeuroCache.repositories.UserRepository;
 import org.modelmapper.ModelMapper;
-import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +45,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponseDTO signup(SignupRequestDTO signupRequestDTO) {
         if (userRepository.findByEmail(signupRequestDTO.email()).isPresent()) {
-            throw new RuntimeException("Email already exists");
+            throw new UserAlreadyExistsException("Email already exists");
         }
 
         User user = new User();
@@ -66,6 +65,17 @@ public class UserServiceImpl implements UserService {
 
         return new TokenResponseDTO(token);
     }
+
+    @Override
+    public User getAuthenticatedUser() {
+        Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
+        return ((UserMain) authentication.getPrincipal()).getUser();
+    }
+
+
+
+
 
 
 }

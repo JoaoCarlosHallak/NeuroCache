@@ -24,6 +24,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(email));
+        //teste para ver como o id ta indo. pois chega no mongo db cheio de numeros
+        System.out.println("UserDetailsServiceImpl loadUserByUsername - " + user);
         return new UserMain(user);
 
     }
