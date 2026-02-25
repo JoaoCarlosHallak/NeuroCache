@@ -75,9 +75,11 @@ public class Memory {
     private double confidence; // Nível de confiança da informação
     private Instant createdAt;
 }
+```
 
 🔎 Recuperação (RAG) e Similaridade
 
+```
 Ao processar uma pergunta (QUEST ou MIXED):
 
     Gera-se o embedding vetorial da pergunta.
@@ -89,9 +91,11 @@ Ao processar uma pergunta (QUEST ou MIXED):
     As memórias são filtradas por similaridade + índice de confiança.
 
     As memórias aprovadas são injetadas dinamicamente no prompt do modelo.
+```
 
 🏗 Arquitetura e Organização
 
+```
 A aplicação segue conceitos de Clean Architecture, organizada de forma modular e extensível:
 
     controllers/: Exposição das APIs REST.
@@ -103,18 +107,8 @@ A aplicação segue conceitos de Clean Architecture, organizada de forma modular
     entities/ & dtos/: Modelagem de dados e transferência.
 
     configs/ & exceptions/: Configurações de Beans e tratamento global de erros.
+```
 
-Principais Serviços:
-
-    ExtractionService: Responsável pela análise e classificação do contexto via IA.
-
-    MemoryService: Gerencia o ciclo de vida e a persistência no banco.
-
-    EmbeddingService: Faz a interface com modelos de embedding para gerar os vetores.
-
-    ContextQuestProcessorService / ContextMixedProcessorService: Orquestram os pipelines específicos.
-
-    ChatService: Cuida da comunicação estruturada final com o LLM.
 
 🛠 Tecnologias Utilizadas
 
@@ -126,7 +120,7 @@ Principais Serviços:
 
     Inteligência Artificial: Spring AI, Ollama (LLM Local)
 
-    Utilitários: Lombok, ModelMapper
+    Utilitários: Lombok, ModelMapper, OpenFeign
 
 🧬 Exemplo Prático de Funcionamento
 
@@ -147,7 +141,7 @@ Processamento (NeuroCache):
     Geração: O LLM gera uma resposta altamente personalizada usando o contexto injetado.
 
 🎯 Objetivos do Projeto
-
+```
 Este projeto foi desenvolvido para demonstrar a aplicação de engenharia de software na construção de sistemas inteligentes. Os principais pilares técnicos demonstrados aqui incluem:
 
     Arquitetura backend segura e escalável.
@@ -160,7 +154,5 @@ Este projeto foi desenvolvido para demonstrar a aplicação de engenharia de sof
 
     Modelagem de um contexto cognitivo artificial utilizando ecossistema Spring.
 
-
+```
 ---
-
-O diagrama agora vai renderizar perfeitamente no GitHub! Gostaria que eu criasse aquele rascunho da seção "Como Executar" (com instruções para rodar o MongoDB e o Ollama) para deixar o README ainda mais completo?
