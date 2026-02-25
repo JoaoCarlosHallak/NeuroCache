@@ -3,6 +3,7 @@ package com.hallak.NeuroCache.services;
 import com.hallak.NeuroCache.dtos.MemoryDTO;
 import com.hallak.NeuroCache.entities.Domain;
 import com.hallak.NeuroCache.entities.Memory;
+import com.hallak.NeuroCache.entities.MemoryScore;
 import com.hallak.NeuroCache.repositories.MemoryRepository;
 import com.hallak.NeuroCache.utils.SystemPrompts;
 import org.modelmapper.ModelMapper;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.management.modelmbean.ModelMBean;
 import java.time.Instant;
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class MemoryServiceImpl implements MemoryService {
@@ -67,8 +69,40 @@ public class MemoryServiceImpl implements MemoryService {
 
 
 
-
     }
 
+    public List<Memory> findRelevantMemories(String userId, float[] questionEmbedding) {
 
+        List<Memory> memories = memoryRepository.findByUserId(userId);
+
+        return memories.stream()
+                .map(memory -> {
+                    double similarity = cosineSimilarity(
+                            questionEmbedding,
+                            memory.getEmbedding()
+                    );
+
+                    double finalScore = similarity * memory.getConfidence();
+
+                    return new MemoryScore(memory, finalScore);
+                })
+                .sorted((a, b) -> Double.compare(b.score(), a.score()))
+                .limit(5)
+                .map(MemoryScore::memory)
+                .toList();
+    }
+
+    private double cosineSimilarity(float[] v1, float[] v2) {
+        double dot = 0.0;
+        double normA = 0.0;
+        double normB = 0.0;
+
+        for (int i = 0; i < v1.length; i++) {
+            dot += v1[i] * v2[i];
+            normA += v1[i] * v1[i];
+            normB += v2[i] * v2[i];
+        }
+
+        return dot / (Math.sqrt(normA) * Math.sqrt(normB));
+    }
 }

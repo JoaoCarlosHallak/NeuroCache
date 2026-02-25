@@ -1,5 +1,9 @@
 package com.hallak.NeuroCache.utils;
 
+import com.hallak.NeuroCache.entities.Memory;
+
+import java.util.List;
+
 public class SystemPrompts {
 
     public static String getAnalyzerPromptDomain(String payload) {
@@ -78,10 +82,6 @@ public class SystemPrompts {
         }
 
 
-        public static String getResponderPrompt () {
-            return """
-                    ...""";
-        }
 
 
     public static String getContextPayloadPrompt(String payload) {
@@ -102,23 +102,26 @@ QUEST
 Definições:
 
 INFO
-O texto é uma afirmação, declaração ou descrição de fatos, crenças, preferências, identidade, experiências ou estados do usuário ou do mundo.
-Mesmo que possa gerar conversa, ele NÃO pede nada explicitamente.
+O texto é uma afirmação clara e declarativa de fatos, crenças, identidade, preferências ou estados do usuário.
+Deve ser algo que possa ser armazenado como dado relativamente estável.
 
 QUEST
-O texto tem como objetivo principal obter uma resposta, explicação, ajuda ou ação.
+O texto tem como objetivo principal obter uma resposta, explicação, ajuda ou validação.
+Inclui perguntas diretas ou indiretas, inclusive perguntas sobre si mesmo.
 
 MIXED
-O texto contém ao mesmo tempo:
-- uma afirmação ou informação
+O texto contém simultaneamente:
+- uma afirmação factual clara e armazenável
 e
-- um pedido, pergunta ou solicitação
+- uma pergunta separada ou pedido explícito.
 
-Regras:
-1. Frases como “eu acredito”, “eu penso”, “eu gosto”, “eu sou”, “na minha opinião” são INFO se não houver pergunta.
-2. Só é QUEST se houver intenção clara de obter resposta.
-3. Retorne SOMENTE uma palavra: INFO, MIXED ou QUEST.
-4. Não escreva mais nada.
+Regras importantes:
+
+1. Se o texto terminar com ponto de interrogação e estiver buscando validação, confirmação ou julgamento, classifique como QUEST.
+2. Perguntas sobre si mesmo NÃO são consideradas INFO.
+3. Só classifique como MIXED se houver claramente uma afirmação independente e uma pergunta distinta.
+4. Retorne SOMENTE uma palavra: INFO, MIXED ou QUEST.
+5. Não escreva mais nada.
 
 <TEXT>
 """ + payload + """
@@ -126,6 +129,47 @@ Regras:
 """;
     }
 
+    public static String getResponderQuestPrompt(String payload, List<Memory> memoryList) {
+
+        String memoriesSection;
+
+        if (memoryList == null || memoryList.isEmpty()) {
+            memoriesSection = "[]";
+        } else {
+            StringBuilder sb = new StringBuilder();
+            for (Memory memory : memoryList) {
+                sb.append("- ")
+                        .append(memory.getContent())
+                        .append("\n");
+            }
+            memoriesSection = sb.toString();
+        }
+
+        return """
+            Você é um assistente inteligente com capacidade de contextualização personalizada.
+
+            Você receberá dois elementos:
+            1) Uma PERGUNTA (sempre presente).
+            2) Uma lista opcional de MEMÓRIAS do usuário (pode estar vazia).
+
+            Sua tarefa:
+            - Sempre responder à pergunta de forma clara, estruturada e útil.
+            - Se houver memórias disponíveis, utilize-as para enriquecer a resposta, tornando-a mais personalizada.
+            - Se não houver memórias, responda normalmente, de forma útil e objetiva.
+            - Nunca mencione explicitamente que está utilizando memórias.
+            - Nunca invente memórias que não estejam listadas.
+            - Se as memórias não forem relevantes para a pergunta, ignore-as.
+            - Priorize clareza, coerência e aplicabilidade prática.
+            - Não inclua metacomentários.
+
+            ENTRADA:
+
+            PERGUNTA:
+            """ + payload + """
+
+            MEMÓRIAS:
+            """ + memoriesSection;
+    }
 
 
 
