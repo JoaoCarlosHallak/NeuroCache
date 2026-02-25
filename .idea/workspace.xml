@@ -8,14 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8837eba2-5dc6-427a-a038-5cf151883416" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/dtos/ExtractionResultMixedDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/dtos/ResponseFromMixedTreatmentDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/ContextMixedProcessorService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/ContextMixedProcessorServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/ContextAwareProcessorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/ContextAwareProcessorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/ContextAwareProcessorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/services/ContextAwareProcessorServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/utils/SystemPrompts.java" beforeDir="false" afterPath="$PROJECT_DIR$/NeuroCache/src/main/java/com/hallak/NeuroCache/utils/SystemPrompts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
