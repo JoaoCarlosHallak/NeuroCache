@@ -171,6 +171,43 @@ Regras importantes:
             """ + memoriesSection;
     }
 
+    public static String getMixedExtractionPrompt(String payload) {
+        return """
+Você é um extrator semântico para um sistema de memória inteligente.
 
+O texto abaixo foi classificado como MIXED, ou seja, contém:
+- uma parte informacional persistível
+e
+- uma parte que representa uma pergunta ou pedido
+
+Sua tarefa é:
+
+1) Separar a parte informacional persistível (info).
+2) Separar a pergunta principal (question).
+
+Regras importantes:
+
+- "info" deve conter apenas afirmações claras e armazenáveis.
+- Não inclua perguntas em "info".
+- "question" deve conter apenas a pergunta principal.
+- Se a informação estiver implícita, reescreva-a de forma clara e declarativa.
+- Não invente conteúdo.
+- Não inclua comentários.
+- Não explique nada.
+
+Retorne SOMENTE um JSON válido no formato:
+
+{
+  "info": "...",
+  "question": "..."
+}
+
+Texto:
+
+<TEXT>
+""" + payload + """
+</TEXT>
+""";
+    }
 
     }

@@ -1,6 +1,7 @@
 package com.hallak.NeuroCache.services;
 
 import com.hallak.NeuroCache.dtos.MemoryDTO;
+import com.hallak.NeuroCache.dtos.ResponseFromMixedTreatmentDTO;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,19 +11,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class ContextAwareProcessorServiceImpl implements ContextAwareProcessorService {
 
+    private final ContextMixedProcessorService contextMixedProcessorService;
     private final ContextQuestProcessorService contextQuestProcessorService;
-    private final ChatService chatService;
-    private final EmbeddingService embeddingService;
-    private final ModelMapper  modelMapper;
     private final MemoryService memoryService;
     private final Logger logger = LoggerFactory.getLogger(ContextAwareProcessorServiceImpl.class);
 
     @Autowired
-    public ContextAwareProcessorServiceImpl(ContextQuestProcessorService contextQuestProcessorService, ChatService chatService, EmbeddingService embeddingService, ModelMapper modelMapper, MemoryService memoryService) {
+    public ContextAwareProcessorServiceImpl(ContextMixedProcessorService contextMixedProcessorService, ContextQuestProcessorService contextQuestProcessorService,MemoryService memoryService) {
+        this.contextMixedProcessorService = contextMixedProcessorService;
         this.contextQuestProcessorService = contextQuestProcessorService;
-        this.chatService = chatService;
-        this.embeddingService = embeddingService;
-        this.modelMapper = modelMapper;
         this.memoryService = memoryService;
     }
 
@@ -40,7 +37,7 @@ public class ContextAwareProcessorServiceImpl implements ContextAwareProcessorSe
     }
 
     @Override
-    public String mixed(String payload) {
-        return "";
+    public ResponseFromMixedTreatmentDTO mixed(String payload) {
+        return contextMixedProcessorService.treatment(payload);
     }
 }
