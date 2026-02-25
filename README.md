@@ -33,6 +33,9 @@ graph TD
     D --> F[Construção de Contexto]
     F --> G[Chamada ao LLM]
     G --> H((Resposta Enriquecida))
+```
+
+---
 
 
 🧩 Funcionalidades Core
@@ -142,7 +145,7 @@ Processamento (NeuroCache):
 
 🎯 Objetivos do Projeto
 
-Este projeto foi desenvolvido para ir além de um CRUD tradicional, demonstrando a aplicação de engenharia de software na construção de sistemas inteligentes. Os principais pilares técnicos demonstrados aqui incluem:
+Este projeto foi desenvolvido para demonstrar a aplicação de engenharia de software na construção de sistemas inteligentes. Os principais pilares técnicos demonstrados aqui incluem:
 
     Arquitetura backend segura e escalável.
 
@@ -153,3 +156,8 @@ Este projeto foi desenvolvido para ir além de um CRUD tradicional, demonstrando
     Engenharia avançada de prompts e extração estruturada de dados com IA.
 
     Modelagem de um contexto cognitivo artificial utilizando ecossistema Spring.
+
+
+---
+
+O diagrama agora vai renderizar perfeitamente no GitHub! Gostaria que eu criasse aquele rascunho da seção "Como Executar" (com instruções para rodar o MongoDB e o Ollama) para deixar o README ainda mais completo?
