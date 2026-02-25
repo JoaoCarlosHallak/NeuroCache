@@ -51,18 +51,21 @@ graph TD
 
     Interceptação segura de requisições via Filtro JWT personalizado.
 
-🧠 Classificação de Contexto Cognitivo
+### 🧠 Classificação de Contexto Cognitivo
 
 As mensagens enviadas pelos usuários passam por uma etapa de extração estruturada e são classificadas em três tipos para otimização do fluxo:
-Tipo	Descrição	Comportamento do Sistema
-INFO	Informação declarativa.	Armazenada silenciosamente como nova memória.
-QUEST	Pergunta direta do usuário.	Dispara a recuperação de contexto vetorial.
-MIXED	Informação + Pergunta.	Armazena a nova informação e recupera contexto para responder.
-📚 Sistema de Memória Vetorial
+
+| Tipo | Descrição | Comportamento do Sistema |
+|---|---|---|
+| **INFO** | Informação declarativa. | Armazenada silenciosamente como nova memória. |
+| **QUEST** | Pergunta direta do usuário. | Dispara a recuperação de contexto vetorial. |
+| **MIXED** | Informação + Pergunta. | Armazena a nova informação e recupera contexto para responder. |
+
+### 📚 Sistema de Memória Vetorial
 
 As memórias são isoladas por usuário e persistidas em banco de dados NoSQL, indexadas para buscas matemáticas.
-Java
 
+```java
 public class Memory {
     private String id;
     private String userId;
